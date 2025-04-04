@@ -5,18 +5,21 @@ function processImage() {
         return;
     }
 
-    let preview = document.getElementById("preview");
-    let ghibliImage = document.getElementById("ghibliImage");
+    let chatBox = document.getElementById("chatBox");
 
-    let reader = new FileReader();
-    reader.onload = function(e) {
-        preview.src = e.target.result;
+    // User message
+    let userMessage = document.createElement("div");
+    userMessage.classList.add("chat-message", "user");
+    userMessage.textContent = "Generating your Ghibli Portrait...";
+    chatBox.appendChild(userMessage);
+    chatBox.scrollTop = chatBox.scrollHeight;
 
-        // Simulate AI-generated Ghibli effect (Replace with real AI API later)
-        setTimeout(() => {
-            ghibliImage.src = e.target.result; // Replace this with actual AI output
-            alert("Ghibli Portrait Generated! (AI processing will be added later)");
-        }, 2000);
-    };
-    reader.readAsDataURL(upload);
+    // Simulate AI Processing
+    setTimeout(() => {
+        let botMessage = document.createElement("div");
+        botMessage.classList.add("chat-message", "bot");
+        botMessage.innerHTML = `<img src="https://via.placeholder.com/300" alt="Ghibli Portrait"> <br> Here is your Ghibli-style portrait! 🎨`;
+        chatBox.appendChild(botMessage);
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }, 3000);
 }
